@@ -5,7 +5,59 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약을 원하시는 날짜를 선택해 주세요</title>
+<title>Reservation</title>
+<style>
+	#reservation_time{
+		margin:50px;
+		width:600px;
+		border-collapse:collapse;
+		color: #505050;
+	}
+	#reservation_time td.top{
+		padding-bottom: 20px;
+		font-weight:700;
+		font-size:25px;
+	}
+	#reservation_time td.content{
+		padding-bottom: 50px;
+	}
+	#timeTable{margin-bottom:50px; padding:5px; width:200px; color:#505050;}
+	#timeTable td{padding:8px;}
+	
+	#selectedDate{width: 200px; height: 20px; padding: 10px; 
+				  color: #505050; font-size: 17px; background-color: #fff; border: 1px solid #dcdcdc;}
+	#selectedTime{width: 200px; height: 20px; padding: 10px;
+				  color: #505050; font-size: 17px; background-color: #fff; border: 1px solid #dcdcdc;}
+	#selectedPrice{width: 200px; height: 20px; padding: 10px;
+					color: #505050; font-size:17px; background-color: #fff; border: 1px solid #dcdcdc;}
+	
+	#btn_submit{
+		margin:0;
+		padding:20px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 20px; color:#fff;
+		background-color: #ace2f9;
+		font-weight: 700;
+		border: none;
+		display: inline-block;
+		width: 300px;
+	}
+	
+	#btn_submit:hover{
+		margin:0;
+		padding: 20px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 20px; color:#ace2f9;
+		background-color: #fff;
+		font-weight: 700;
+		border: 1px solid #ace2f9;
+		display: inline-block;
+		width: 300px;
+	}
+	
+</style>
 </head>
 <script type="text/javascript">
 	//------------- calendar----------------
@@ -20,7 +72,7 @@
 	//오늘 기준으로 구현하는 월, 일 객체
 	var realMonth = date.getMonth() + 1;
 	var realToday = date.getDate();
-
+	
 	//달력 제작(이번달 기준)
 	function buildCalendar() {
 		var row = null
@@ -134,24 +186,58 @@
 	
 </script>
 <body>
-	<table id="calendar" align="center" width="600" height="500">
+	<table id ="reservation_time">
 		<tr>
-			<td align="center"><label onclick="prevCalendar()"> ◀ </label></td>
-			<td colspan="5" align="center" id="calendarTitle">yyyy년 m월</td>
-			<td align="center"><label onclick="nextCalendar()"> ▶ </label></td>
+			<td class="top" align="left">시간선택</td>
+			<td class="top" align="right">
+			<table id="timeTable"></table>
+			<button class="btnTime" type="button" onclick="tableinit()">초기화</button></td>
+		</tr>	
+		<tr>
+			<td>
+				<table id="calendar" align="center" width="500" height="400">
+					<tr>
+						<td align="center"><label onclick="prevCalendar()"> ◀ </label></td>
+						<td colspan="5" align="center" id="calendarTitle">yyyy년 m월</td>
+						<td align="center"><label onclick="nextCalendar()"> ▶ </label></td>
+					</tr>
+					<tr>
+						<td align="center"><font color="#F79DC2">일</td>
+						<td align="center">월</td>
+						<td align="center">화</td>
+						<td align="center">수</td>
+						<td align="center">목</td>
+						<td align="center">금</td>
+						<td align="center"><font color="skyblue">토</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table id="timeTable">	</table>
+			</td>
 		</tr>
 		<tr>
-			<td align="center"><font color="#F79DC2">일</td>
-			<td align="center">월</td>
-			<td align="center">화</td>
-			<td align="center">수</td>
-			<td align="center">목</td>
-			<td align="center">금</td>
-			<td align="center"><font color="skyblue">토</td>
+			<td class="top" align="left" colspan="2">예약일시</td>
 		</tr>
-		<script type="text/javascript">
-			buildCalendar();
-		</script>
+		<tr>
+			<td class="content" colspan="2" align="left">
+				<input id="selectedDate"  name="selectedDate" value="" readonly="readonly"></input>
+				<input id="selectedTime"  name="selectedTime" value="" readonly="readonly"></input>
+			</td>
+		</tr>
+		<tr>
+			<td class="top" align="left">결제정보</td>
+		</tr>
+		<tr>
+			<td class="content" align="left" colspan="2">
+				<input id="selectedPrice"  style="text-align:right;" name="selectedPrice" value="" readonly="readonly">원</input>
+			</td>
+		</tr>
+		<tr>
+			<td class="content" align="left" colspan="2">
+			<input id="btn_submit" type="button" value="결제하기" onclick="submitRes()"></td>
+		</tr>
 	</table>
+<script type="text/javascript">buildCalendar();</script>
 </body>
 </html>
