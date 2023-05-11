@@ -1,4 +1,4 @@
-package RestaurantJava;
+package QnABoard;
 
 import java.beans.PropertyVetoException;
 
@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
-public class MemberConfig {
-	@Bean(destroyMethod = "close")
+public class BoardConfig {
+	@Bean(destroyMethod="close")
 	public DataSource dataSource() {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		try {
@@ -26,7 +26,7 @@ public class MemberConfig {
 	}
 	
 	@Bean
-	public MemberDao MemberDao() {
-		return new MemberDaoImpl(dataSource());
+	public BoardDao BoardDao() {
+		return new BoardDaoImpl(dataSource());
 	}
 }

@@ -54,9 +54,9 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-   			app0427.MvcConfig
-   			app0427.MemberInfoConfig
-   			app0427.ControllerConfig
+   			RestaurantJava.MvcConfig
+   			RestaurantJava.MemberConfig
+   			RestaurantJava.ControllerConfig
    		</param-value>
 		</init-param>
 		<init-param>

@@ -1,17 +1,19 @@
 package RestaurantJava;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Controller
 public class MemberInsertController {
-	private MemberDao_Interface memberDao;
+	private MemberDao memberDao;
 	
-	public MemberInsertController setMemberDao(MemberDao_Interface memberDao) {
+	public MemberInsertController setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 		return this;
 	}
 	
 	@PostMapping("insert")
-	public String insert(Member member) {
+	public String insert(Member member) throws Exception{
 		try {
 			memberDao.insert(member);
 		}catch(Exception e) {

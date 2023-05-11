@@ -9,12 +9,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ControllerConfig implements WebMvcConfigurer {
 	@Autowired
-	private MemberDao_Interface MemberDao;
+	private MemberDao MemberDao;
 
 	@Bean
 	public LoginController loginController() {
 		LoginController loginController = new LoginController();
 		return loginController.setMemberDao(MemberDao);
+	}
+	
+	@Bean
+	public LogoutController logoutController() {
+		LogoutController logoutController = new LogoutController();
+		return logoutController;
 	}
 
 	@Bean
@@ -34,4 +40,5 @@ public class ControllerConfig implements WebMvcConfigurer {
 		MemberUpdateController memberUpdateController = new MemberUpdateController();
 		return memberUpdateController.setMemberDao(MemberDao);
 	}
+	
 }
