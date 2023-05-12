@@ -64,6 +64,10 @@
 <div class="right">
 	<a href="LoginPage.jsp" class="loginBtn">로그인</a>
 	<a href="SubPage.jsp" class="subBtn">회원가입</a>
+	<form action="board" method="get">
+		<input type="submit" value="문의 게시판">
+		<input type="hidden" name="page" value="1">
+	</form>
 </div>
 <%} else{%>
 <div class="right">
@@ -71,6 +75,10 @@
 	<input type="button" value="내 정보" onclick="location.href='MyInfoPage.jsp'">
 	<form action="logout" method="get">
 		<input type="submit" value="로그아웃">
+	</form>
+	<form action="board" method="get">
+		<input type="submit" value="문의 게시판">
+		<input type="hidden" name="page" value="1">
 	</form>
 </div>
 <%} %>

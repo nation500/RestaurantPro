@@ -1,13 +1,11 @@
-package QnABoard;
+package RestaurantJava;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -25,7 +23,7 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public List<Board> getList(int i) throws Exception {
-		List<Board> list = jdbcTemplate.query("select * from board order by num DESC, date DESC LIMIT" + (i - 1) * 12 + ", 12", new RowMapper<Board>(){
+		List<Board> list = jdbcTemplate.query("select * from board order by num DESC, date DESC LIMIT " + (i - 1) * 12 + ", 12", new RowMapper<Board>(){
 
 			@Override
 			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {

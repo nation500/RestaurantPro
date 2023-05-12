@@ -25,6 +25,7 @@ public class LoginController {
 				String phone3 = phone.substring(7 , 11);
 				session.setAttribute("id", mem.getId());
 				session.setAttribute("name", mem.getName());
+				session.setAttribute("phone", phone);
 				session.setAttribute("phone1", phone1);
 				session.setAttribute("phone2", phone2);
 				session.setAttribute("phone3", phone3);

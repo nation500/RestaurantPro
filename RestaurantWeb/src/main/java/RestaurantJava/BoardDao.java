@@ -1,4 +1,4 @@
-package QnABoard;
+package RestaurantJava;
 
 import java.util.List;
 
