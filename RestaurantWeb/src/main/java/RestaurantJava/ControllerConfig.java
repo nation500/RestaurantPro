@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
 @Configuration
 public class ControllerConfig implements WebMvcConfigurer {
 	@Autowired
@@ -53,5 +52,25 @@ public class ControllerConfig implements WebMvcConfigurer {
 	public BoardSubmitController boardSubmitController() {
 		BoardSubmitController boardSubmitController = new BoardSubmitController();
 		return boardSubmitController.setBoardDao(boardDao);
+	}
+	@Bean
+	public BoardWriteController boardWriteController() {
+		BoardWriteController boardWriteController = new BoardWriteController();
+		return boardWriteController;
+	}
+	@Bean
+	public BoardDeleteController boardDeleteController() {
+		BoardDeleteController boardDeleteController = new BoardDeleteController();
+		return boardDeleteController.setBoardDao(boardDao);
+	}
+	@Bean
+	public BoardEditController boardEditController() {
+		BoardEditController boardEditController = new BoardEditController();
+		return boardEditController.setBoardDao(boardDao);
+	}
+	@Bean
+	public BoardSelectController boardSelectController() {
+		BoardSelectController boardSelectController = new BoardSelectController();
+		return boardSelectController.setBoardDao(boardDao);
 	}
 }

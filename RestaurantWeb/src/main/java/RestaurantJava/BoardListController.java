@@ -18,7 +18,7 @@ public class BoardListController {
 	}
 	
 	@GetMapping("board")
-	public String getBoard(HttpSession session, @RequestParam("page") String page) throws Exception{
+	public String select(HttpSession session, @RequestParam("page") String page) throws Exception{
 		try {
 			int i = Integer.parseInt(page);
 			List<Board> list = boardDao.getList(i);
@@ -27,7 +27,8 @@ public class BoardListController {
 			}
 			session.setAttribute("list", list);
 			int cnt = boardDao.getListCnt();
-			session.setAttribute("rowCount", cnt);
+			int Bcnt = ((cnt - 1)/12) + 1;
+			session.setAttribute("Bcnt", Bcnt);
 		}catch(Exception e) {
 			e.printStackTrace();
 

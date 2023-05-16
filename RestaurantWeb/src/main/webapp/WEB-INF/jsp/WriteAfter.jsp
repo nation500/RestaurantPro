@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>게시판에 게시물이 없습니다!</h1>
-<form action="goWrite" method="post">
-	<input type="submit" value="글쓰기">
-</form>
+<script type="text/javascript">
+	alert("문의 게시물이 성공적으로 등록되었습니다");
+	location.href="board?page=1";
+</script>
 </body>
 </html>
