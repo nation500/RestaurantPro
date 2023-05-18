@@ -2,6 +2,12 @@ package reservation;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 public class ReservationDto {	
 	private long no;
 	private String id;
@@ -13,62 +19,36 @@ public class ReservationDto {
 	private int price;
 	private String notice;
 	
-	//세션에 저장할 값 추가 선언
-	private String sessionDate;
-	private String sessionTime;
-	private int sessionPerson;
-	private String sessionNotice;
-	
-	
-	
-	
 	public long getNo() {
 		return no;
 	}
 	public void setNo(long no) {
 		this.no = no;
 	}
-	public String getSessionDate() {
-		return sessionDate;
-	}
-	public void setSessionDate(String sessionDate) {
-		this.sessionDate = sessionDate;
-	}
-	public String getSessionTime() {
-		return sessionTime;
-	}
-	public void setSessionTime(String sessionTime) {
-		this.sessionTime = sessionTime;
-	}
-	public int getSessionPerson() {
-		return sessionPerson;
-	}
-	public void setSessionPerson(int sessionPerson) {
-		this.sessionPerson = sessionPerson;
-	}
-	public String getSessionNotice() {
-		return sessionNotice;
-	}
-	public void setSessionNotice(String sessionNotice) {
-		this.sessionNotice = sessionNotice;
-	}
 	public String getId() {
 		return id;
 	}
+	//세션에서 가져온 값으로 셋팅
 	public void setId(String id) {
-		this.id = id;
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpSession session = request.getSession(); 
+		this.id = (String)session.getAttribute("id");
+		
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpSession session = request.getSession(); 
+		this.name = (String)session.getAttribute("name");
 	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone = phone; 
+				//phone.substring(0, 3) + "-" + phone.substring(3, 7) + "-" + phone.substring(7, 11);
 	}
 	public Date getDate() {
 		return date;

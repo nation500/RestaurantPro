@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ReservationInsertController {
 	private ReservationDao_InterFace reservationDao;
+	
 	public ReservationInsertController setReservationDao_InterFace(ReservationDao_InterFace reservationDao) {
 		this.reservationDao = reservationDao;
 		return this;

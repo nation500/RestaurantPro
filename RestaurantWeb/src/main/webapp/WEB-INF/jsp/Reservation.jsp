@@ -21,8 +21,6 @@ header {
 }
 
 section {
-	background-color: #1A1A1A;
-	color: white;
 	padding-top: 65px;
 	padding-bottom: 11px;
 }
@@ -504,6 +502,7 @@ body {
 <header>
 		<%@include file="Header.jsp"%>
 	</header>
+	<section>
 	<form action="resinsert"  name="resinsertForm" method="post">
 	<table id="reservation_time">
 		<tr>
@@ -588,6 +587,7 @@ body {
 	</table>
 	</form>
 	<script type="text/javascript">buildCalendar();</script>
+	</section>
 	<footer>
 		<%@include file="Footer.jsp"%>
 	</footer>

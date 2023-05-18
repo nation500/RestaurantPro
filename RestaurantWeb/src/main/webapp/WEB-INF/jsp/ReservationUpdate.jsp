@@ -71,6 +71,15 @@ body {
 #timeTable td {
 	padding: 8px;
 }
+#reslist{
+	margin : 50px;
+	text-align: center;
+	padding:5px;
+	color:#505050;
+
+}
+
+
 #personTable{
 	border: 1px solid #dcdcdc;
 }
@@ -470,9 +479,32 @@ body {
 		buildCalendar();
 		  
 	}
+	
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
+	
+	var no = urlParams.get('no');
+	var name = urlParams.get('name');
+	var phone = urlParams.get('phone');
+	var date = urlParams.get('date');
+	var time = urlParams.get('time');
+	var person = urlParams.get('person');
+	var notice = urlParams.get('notice');
+	
+	var reslistTable = document.getElementById("reslist");
+	var row = reslistTable.insertRow(1); // 새로운 행 추가
+	
+	// 각 셀에 값 집어넣음
+	row.insertCell(0).textContent = name;
+	row.insertCell(1).textContent = phone;
+	row.insertCell(2).textContent = date;
+	row.insertCell(3).textContent = time;
+	row.insertCell(4).textContent = person;
+	row.insertCell(5).textContent = notice;
+	
 	//입력 안된곳 있을시 출력
 	function submitRes(){
-		var form = document.resinsertForm;
+		var form = document.resupdateForm;
 		arr = new Array();
 		
 		dateForm = document.getElementById("date");
@@ -493,17 +525,47 @@ body {
 			      return false;
 			    }
 			  }
+		 
 	 	form.submit();
 	}
 	
-	
 </script>
 <body>
+<%
+	String no = request.getParameter("no");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
+	String date = request.getParameter("date");
+	String time = request.getParameter("time");
+	String person = request.getParameter("person");
+	String notice = request.getParameter("notice");
+	
+%>
 <header>
 		<%@include file="Header.jsp"%>
 	</header>
 	<section>
-	<form action="resinsert"  name="resinsertForm" method="post">
+	<h1>현재 예약시간</h1>
+	<form action="resupdate"  name="resupdateForm" method="post">
+		<table id="reslist" border="1">
+		<input type="hidden" name="no" value="<%=no %>">
+		<tr>
+			<td>이름</td>
+			<td>연락처</td>
+			<td>날짜</td>
+			<td>시간</td>
+			<td>인원수</td>
+			<td>특이사항</td>
+		</tr>
+		<tr>
+			<td><%=name %></td>
+			<td><%=phone %></td>
+			<td><%=date %></td>
+			<td><%=time %></td>
+			<td><%=person %></td>
+			<td><%=notice %></td>
+		</tr>
+	</table>
 	<table id="reservation_time">
 		<tr>
 			<td class="top" align="left">시간선택</td>
@@ -581,7 +643,7 @@ body {
 		</tr>	
 		<tr>
 			<td class="content" align="left" colspan="2">
-			<input	id="btn_submit" type="button" value="예약하기" onclick="submitRes()">
+			<input	id="btn_submit" type="button" value="예약 변경하기" onclick="submitRes()">
 			</td>
 		</tr>
 	</table>

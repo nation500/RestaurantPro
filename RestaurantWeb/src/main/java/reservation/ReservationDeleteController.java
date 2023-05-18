@@ -1,9 +1,8 @@
 package reservation;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReservationDeleteController {
@@ -15,12 +14,12 @@ public class ReservationDeleteController {
 	}
 	
 	@PostMapping("resdelete")
-	public String resdelete(HttpSession session) {
+	public String resdelete(@RequestParam("no")Long no) {
 		try {
-			reservationDao.selectById((HttpSession) session.getAttribute("no"));
+			reservationDao.delete(no);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-		return null;
+		return "redirect:ReservationList";
 	}
 }

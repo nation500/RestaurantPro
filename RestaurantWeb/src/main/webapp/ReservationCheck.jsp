@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 header {
 	position: fixed;
 	background-color: #1C1C1B;
@@ -16,6 +17,10 @@ header {
 	height: 50px;
 }
 
+section {
+	padding-top: 65px;
+	padding-bottom: 11px;
+}
 
 footer {
 	position: fixed;
@@ -27,6 +32,11 @@ footer {
 	left: 0;
 	width: 100%;
 }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
 <script type="text/javascript">
 <%
@@ -36,22 +46,20 @@ footer {
 	String time = (String)session.getAttribute("time");
 	int person = (int)session.getAttribute("person");
 	String notice = (String)session.getAttribute("notice");
-
+	String phone1 = phone.substring(0, 3);
+	String phone2 =	phone.substring(3, 7);
+	String phone3 =	phone.substring(7, 11);
 %>
-
+function home() {
+	window.location.href = "Main.jsp";
+}
 </script>
 </head>
 <body>
 <header>
 	<%@ include file = "Header.jsp" %>
 </header>
-<%
-//	List<ReservationDto> resList =
-//			(ArrayList<ReservationDto>)request.getAttribute("resList");
-//		for(ReservationDto reservationDto : resList){
-
-%>
-
+<section>
 	<h1>예약 확인</h1>
 		<table class="check" border="1">
 		  <tr>
@@ -64,17 +72,17 @@ footer {
   		</tr>
   		<tr>
     		<td><%=name %></td>
-    		<td><%=phone %></td>
+    		<td><%=phone1 %>-<%=phone2 %>-<%=phone3%></td>
     		<td><%=date %></td>
     		<td><%=time %></td>
     		<td><%=person %>명</td>
     		<td><%=notice %></td>
   		</tr>
 	</table>
-	<input type="button" name="" value="예약수정">
-	<input type="button" name="" value="돌아가기">
-</body>
+	<input type="button" name="home" value="돌아가기" onclick="home()">
+</section>
 <footer>
 	<%@ include file ="Footer.jsp" %>
 </footer>
+</body>
 </html>

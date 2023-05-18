@@ -2,13 +2,11 @@ package reservation;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 public interface ReservationDao_InterFace {
-	List<ReservationDto> selectList() throws Exception;
+	List<ReservationDto> selectList(date date) throws Exception;
 	void insert(ReservationDto res) throws Exception;
 	void update(ReservationDto res) throws Exception;
-	void delete(HttpServletRequest request) throws Exception;
-	ReservationDto selectById(HttpSession session) throws Exception;
+	void delete(long no) throws Exception;
+	List<ReservationDto> selectById(String id) throws Exception;
+	
 }
