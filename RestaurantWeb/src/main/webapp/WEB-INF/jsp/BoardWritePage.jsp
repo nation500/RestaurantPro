@@ -10,7 +10,6 @@
 <form action="submitBoard" method="post">
 	<input type="text" name="title" placeholder="제목"><br><br>
 	<textarea name="body" placeholder="본문" style="width:500px; height:300px;"></textarea><br><br>
-	<input type="password" name="pw" placeholder="글 비밀번호">
 	<input type="hidden" name="id" value="<%=session.getAttribute("id")%>">
 	<input type="hidden" name="name" value="<%=session.getAttribute("name")%>">
 	<input type="submit" value="작성">

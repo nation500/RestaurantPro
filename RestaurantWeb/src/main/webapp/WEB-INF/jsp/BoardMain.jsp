@@ -6,15 +6,11 @@
 <html>
 <script type="text/javascript">
 	function writeBtn(){
-		var sessionId = <%=session.getAttribute("id")%>;
-		if( sessionId != null && sessionId != ""){
-			location.href="BoardWrite.jsp";
+		if("<%=session.getAttribute("id")%>" != "null"){
+			location.href="BoardWritePage.jsp";
 		}else{
-			alert("로그인 한 회원만 이용할 수 있습니다");
+			location.href="noSession.jsp";
 		}
-	}
-	function showPageBtn(i){
-		//i값을 컨트롤러에 넘겨야 함
 	}
 </script>
 <head>
@@ -73,10 +69,10 @@ td{
 					<th class="view">조회</th>
 				</tr>
 			</thead>
-			<%for(int i = 0; i < 12; ++i) {%>
+			<%for(int i = 0; i < boardList.size(); ++i) {%>
 				<tr class= "rows" style="text-align: center">
 					<td class="num"><%=boardList.get(i).getNum() %></td>
-					<td class="title" id="title"><%=boardList.get(i).getTitle() %></td>
+					<td><a href="select?contNum=<%=boardList.get(i).getNum() %>" class="title" id="title"><%=boardList.get(i).getTitle() %></a></td>
 					<td class="name"><%=boardList.get(i).getName() %></td>
 					<td class="date"><%=boardList.get(i).getDate() %></td>
 					<td class="view"><%=boardList.get(i).getView() %></td>
@@ -84,10 +80,10 @@ td{
 			<%} %>
 		</table>
 	</div>
-	<input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><br>
+	<input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><a href="Main.jsp">돌아가기</a><br>
 	<form action="board" method="get">
-	<%for(int i = 1; i < Integer.parseInt(session.getAttribute("rowCount").toString()); ++i) {%> <!-- (Integer)session.getAttribute("rowCount") + 1; -->
-		<button name = "page" onclick="showPageBtn(<%=i %>);"><%=i %></button>
+	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%> <!-- (Integer)session.getAttribute("rowCount") + 1; -->
+		<button name = "page" value="<%=i%>"><%=i %></button>
 	<%} %>
 	</form>
 </body>
