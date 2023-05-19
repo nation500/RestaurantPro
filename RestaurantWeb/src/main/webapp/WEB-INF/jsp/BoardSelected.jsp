@@ -16,7 +16,7 @@
 </head>
 <body>
 	<p><%=session.getAttribute("title")%>
-	<p><%=session.getAttribute("name")%>,
+	<p><%=session.getAttribute("writerName")%>,
 		<%=session.getAttribute("date")%>,
 		<%=session.getAttribute("view")%>
 	<p><%=session.getAttribute("body")%>

@@ -12,6 +12,20 @@
 			location.href="noSession.jsp";
 		}
 	}
+	function runSearch(){
+		var form = document.srch;
+		var keyword = form.elements["keyword"].value;
+		if(keyword === ""){
+			alert("검색어를 입력해주세요")
+		}else{
+			form.submit();
+		}
+	}
+	function resetSession(){
+		if("<%=session.getAttribute("searched")%>" == "null"){
+			<%=session.removeAttribute("searched")%>
+		}
+	}
 </script>
 <head>
 <meta charset="UTF-8">
@@ -52,10 +66,20 @@ td{
 #title{
 	text-align:left;
 }
-
+header {
+	position: fixed;
+	background-color: #1C1C1B;
+	top: 15px;
+	left: 0;
+	width: 100%;
+	height: 50px;
+}
 </style>
 </head>
 <body>
+<header>
+	<%@include file="Header.jsp"%>
+</header>
 	<%List<Board> boardList = (List<Board>)session.getAttribute("list"); %>
 	<h1 style="text-align: center">문의 게시판</h1>
 	<div class="container">
@@ -80,11 +104,22 @@ td{
 			<%} %>
 		</table>
 	</div>
-	<input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><a href="Main.jsp">돌아가기</a><br>
+	<input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><a href="Main.jsp" onclick="resetSession()">돌아가기</a><br>
+	<%if(session.getAttribute("searched") == null){ %>
 	<form action="board" method="get">
-	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%> <!-- (Integer)session.getAttribute("rowCount") + 1; -->
+	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%>
 		<button name = "page" value="<%=i%>"><%=i %></button>
 	<%} %>
+	</form>
+	<%}else{%>
+	<form action="search" method="post">
+	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%>
+		<button name = "page" value="<%=i%>"><%=i %></button>
+	<%} %>
+	</form>
+	<%} %>
+	<form action="search" method="post" name="srch">
+		<input type="text" name="keyword" placeholder="제목, 내용"><input type="button" value="검색" onclick="runSearch()"><input type="hidden" name="page" value="1">
 	</form>
 </body>
 </html>

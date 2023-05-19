@@ -73,4 +73,9 @@ public class ControllerConfig implements WebMvcConfigurer {
 		BoardSelectController boardSelectController = new BoardSelectController();
 		return boardSelectController.setBoardDao(boardDao);
 	}
+	@Bean
+	public BoardSearchController boardSearchController() {
+		BoardSearchController boardSearchController = new BoardSearchController();
+		return boardSearchController.setBoardDao(boardDao);
+	}
 }

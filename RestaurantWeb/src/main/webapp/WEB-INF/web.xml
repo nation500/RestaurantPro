@@ -58,8 +58,6 @@
    			RestaurantJava.MemberConfig
    			RestaurantJava.BoardConfig
    			RestaurantJava.ControllerConfig
-   			reservation.ReservationConfig
-   			reservation.ReservationControllerConfig
    		</param-value>
 		</init-param>
 		<init-param>

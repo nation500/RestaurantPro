@@ -69,10 +69,10 @@ public class BoardDaoImpl implements BoardDao {
 
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
-				PreparedStatement pstmt = conn.prepareStatement(
-						"insert into board (id, name, title, body, date, view) values(?,?,?,?,?,?)");
+				PreparedStatement pstmt = conn
+						.prepareStatement("insert into board (id, name, title, body, date, view) values(?,?,?,?,?,?)");
 				pstmt.setString(1, board.getId());
-				pstmt.setString(2, board.getName().substring(0,1) + "****");
+				pstmt.setString(2, board.getName().substring(0, 1) + "****");
 				pstmt.setString(3, board.getTitle());
 				pstmt.setString(4, board.getBody());
 				pstmt.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
@@ -124,6 +124,34 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public void viewUp(long num) throws Exception {
 		jdbcTemplate.update("update board set view=view+1 where num = ?", num);
+	}
+
+	@Override
+	public List<Board> searchByKeyword(String keyword, long i) throws Exception {
+		List<Board> list = jdbcTemplate.query(
+				"select * from board where title like concat('%', ? , '%') or body like concat('%', ?, '%') order by num DESC, date DESC LIMIT ?, 12",
+				new Object[] { keyword, keyword, (i - 1) * 12 }, new RowMapper<Board>() {
+					@Override
+					public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Board board = new Board();
+						board.setNum(rs.getLong("num"));
+						board.setId(rs.getString("id"));
+						board.setName(rs.getString("name"));
+						board.setTitle(rs.getString("title"));
+						board.setBody(rs.getString("body"));
+						board.setDate(rs.getTimestamp("date").toLocalDateTime());
+						board.setView(rs.getLong("view"));
+						return board;
+					}
+				});
+		return list.isEmpty() ? null : list;
+	}
+
+	@Override
+	public int getSearchedCnt(String keyword) throws Exception {
+		String query = "select count(*) from board where title like concat('%', ? , '%') or body like concat('%', ?, '%')";
+		int rowCount = jdbcTemplate.queryForObject(query, Integer.class, keyword, keyword);
+		return rowCount;
 	}
 
 }
