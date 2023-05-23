@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 	function clearSearch(){
 		<%session.removeAttribute("searched"); %>
@@ -85,6 +86,24 @@
 		<input type="submit" value="문의 게시판">
 		<input type="hidden" name="page" value="1">
 	</form>
+	<%
+	String userRole = (String)session.getAttribute("userRole");
+	
+	%>
+<c:if test="${userRole!='admin' }">	
+	<form action ="resview" method="post">
+	<input type="submit" value="예약확인">
+	</form>
+</c:if>
+<c:if test="${userRole=='admin' }">
+	<form action ="alllist" method="post">
+	<input type="submit" value="모든 예약확인">
+	</form>
+	<form action ="todaylist" method="post">
+	<input type="submit" value="오늘의 예약확인">
+	</form>
+</c:if>
+	
 </div>
 <%} %>
 

@@ -14,6 +14,7 @@ public class LoginController {
 		return this;
 	}
 	
+	
 	@PostMapping("login")
 	public String login(Member member, HttpSession session) {
 		try {
@@ -29,6 +30,9 @@ public class LoginController {
 				session.setAttribute("phone1", phone1);
 				session.setAttribute("phone2", phone2);
 				session.setAttribute("phone3", phone3);
+				
+				String userRole = mem.getId();
+				session.setAttribute("userRole", userRole);
 				return "Main";
 			}
 		}catch(Exception e) {}
