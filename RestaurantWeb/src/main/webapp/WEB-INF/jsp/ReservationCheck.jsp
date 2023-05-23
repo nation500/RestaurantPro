@@ -59,7 +59,7 @@ function home() {
 <header>
 	<%@ include file = "Header.jsp" %>
 </header>
-	<section>
+<section>
 	<h1>예약 확인</h1>
 		<table class="check" border="1">
 		  <tr>

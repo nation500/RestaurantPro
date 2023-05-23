@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모든 예약 확인</title>
 <style type="text/css">
 
 header {
@@ -37,9 +37,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+#reservationallview{
+	text-align: center;
+}
 </style>
 <script type="text/javascript">
-
 //예약 취소 확인창
 function confirmCancellation(button) {
   var confirmation = confirm("예약을 취소 하시겠습니까?");
@@ -101,8 +103,8 @@ function resUpdate(button) {
 		<%@include file="Header.jsp"%>
 	</header>
 	<section>
-	<h1>내 예약 확인</h1>
-	<table border="1" id="reservationList">
+	<h1>모든 예약 확인</h1>
+	<table border="1" id="reservationallview">
   <thead>
     <tr>
       <th>이름</th>
@@ -116,18 +118,17 @@ function resUpdate(button) {
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="reservationList" items="${reservationList}">
+    <c:forEach var="reservationallview" items="${reservationallview}">
       <tr>
-<!--    <td>${reservation.no}</td>--> 
-        <td> ${reservationList.name}</td>
-        <td><c:set var="formattedPhone" value="${reservationList.phone.substring(0, 3)}-${reservationList.phone.substring(3, 7)}-${reservationList.phone.substring(7, 11)}" />
+        <td>${reservationallview.name}</td>
+        <td><c:set var="formattedPhone" value="${reservationallview.phone.substring(0, 3)}-${reservationallview.phone.substring(3, 7)}-${reservationallview.phone.substring(7, 11)}" />
   			${formattedPhone}</td>
-        <td>${reservationList.date}</td>
-        <td>${reservationList.time}</td>
-        <td>${reservationList.person}</td>
-        <td>${reservationList.notice}</td>
+        <td>${reservationallview.date}</td>
+        <td>${reservationallview.time}</td>
+        <td>${reservationallview.person}</td>
+        <td>${reservationallview.notice}</td>
         <td><input type="button" value="예약 변경" onclick="resUpdate(this)">
-        	<input type="hidden" id="no" name="no" value="${reservationList.no}"/></td>
+        	<input type="hidden" id="no" name="no" value="${reservationallview.no}"/></td>
         <td><input type="button" value="예약 취소" onclick="confirmCancellation(this)"></td>
       </tr>
     </c:forEach>

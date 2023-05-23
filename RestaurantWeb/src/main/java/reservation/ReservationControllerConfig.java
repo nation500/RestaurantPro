@@ -31,4 +31,17 @@ public class ReservationControllerConfig {
 		ReservationViewController reservationViewController = new ReservationViewController();
 		return reservationViewController.setReservationDao_InterFace(reservationDao);
 	}
+	
+	@Bean
+	public ReservationAllViewController reservationAllViewController() {
+		ReservationAllViewController reservationAllViewController = new ReservationAllViewController();
+		return reservationAllViewController.setReservationDao_InterFace(reservationDao);
+	}
+	
+	@Bean
+	public ReservationTodayListController reservationTodayListController() {
+		ReservationTodayListController reservationTodayListController = new ReservationTodayListController();
+		return reservationTodayListController.setReservationDao_InterFace(reservationDao);
+	}
+	
 }

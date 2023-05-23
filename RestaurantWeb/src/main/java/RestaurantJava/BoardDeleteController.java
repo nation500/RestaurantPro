@@ -23,4 +23,5 @@ public class BoardDeleteController {
 		}
 		return "redirect:board?page=1";
 	}
+
 }

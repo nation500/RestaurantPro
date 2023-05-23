@@ -1,7 +1,6 @@
 package reservation;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,15 +43,13 @@ public class ReservationDaoImpl implements ReservationDao_InterFace{
 	            }
 	        }, id);
 	    return list.isEmpty() ? null : list;
-	    
-	   
 	}
+	
+	
 	// 모든 테이블값 출력 오늘지난 날짜 제외
-	public List<ReservationDto> selectList() throws Exception	{
-		Date date = null;
-		
-		
-		List<ReservationDto> allList = JdbcTemplate.query("select * from reservation where date >= CURRENT_DATE() order by date asc",
+	public List<ReservationDto> alllist() throws Exception	{
+		System.out.println("2");
+	List<ReservationDto> allList = jdbcTemplate.query("select * from reservation where date >= CURRENT_DATE() order by date asc",
 				new RowMapper<ReservationDto>() {
 				@Override
 				public ReservationDto mapRow(ResultSet rs, int rowNum) throws SQLException{
@@ -67,8 +64,28 @@ public class ReservationDaoImpl implements ReservationDao_InterFace{
 					reservationDto.setNotice(rs.getString("notice"));
 					return reservationDto;
 				}
-		}, date); 
+		}); 
 		return allList.isEmpty() ? null: allList;
+	}
+	
+	public List<ReservationDto> todaylist() throws Exception{
+		List<ReservationDto> todaylist = jdbcTemplate.query("SELECT * FROM reservation WHERE date = CURDATE() ORDER BY date ASC",
+			    new RowMapper<ReservationDto>() {
+	        @Override
+	        public ReservationDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            ReservationDto reservationDto = new ReservationDto();
+	            reservationDto.setNo(rs.getLong("no"));
+	            reservationDto.setId(rs.getString("id"));
+	            reservationDto.setName(rs.getString("name"));
+	            reservationDto.setPhone(rs.getString("phone"));
+	            reservationDto.setDate(rs.getDate("date"));
+	            reservationDto.setTime(rs.getString("time"));
+	            reservationDto.setPerson(rs.getInt("person"));
+	            reservationDto.setNotice(rs.getString("notice"));
+	            return reservationDto;
+	        }
+	    });
+		return todaylist.isEmpty() ? null : todaylist;
 	}
 	
 	public void insert(ReservationDto res) throws Exception {

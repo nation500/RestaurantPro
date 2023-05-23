@@ -20,8 +20,8 @@ public class ReservationViewController {
 	public String view(Model model, @SessionAttribute("id")String id,
 			@SessionAttribute("name") String name, @SessionAttribute("phone")String phone) throws Exception{
 		try {
-			List<ReservationDto> reservationDtoList = reservationDao.selectById(id);
-			model.addAttribute("reservationList", reservationDtoList);
+			List<ReservationDto> reservationList = reservationDao.selectById(id);
+			model.addAttribute("reservationList", reservationList);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

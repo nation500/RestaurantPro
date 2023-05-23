@@ -2,12 +2,6 @@ package reservation;
 
 import java.sql.Date;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 public class ReservationDto {	
 	private long no;
 	private String id;
@@ -30,18 +24,14 @@ public class ReservationDto {
 	}
 	//세션에서 가져온 값으로 셋팅
 	public void setId(String id) {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-		HttpSession session = request.getSession(); 
-		this.id = (String)session.getAttribute("id");
+		this.id = id;
 		
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-		HttpSession session = request.getSession(); 
-		this.name = (String)session.getAttribute("name");
+		this.name = name;
 	}
 	public String getPhone() {
 		return phone;

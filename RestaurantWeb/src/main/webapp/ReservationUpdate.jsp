@@ -625,14 +625,7 @@ body {
 			<input id="time" name="time" value="" readonly="readonly"></input>
 			</td>
 		</tr>
-		<tr>
-			<td class="top" align="left">예약금 정보</td>
-		</tr>
-		<tr>
-			<td class="content" align="left" colspan="2">
-			<input	id="price" style="text-align: right;" name="price" value="" readonly="readonly">원</input>
-			</td>
-		</tr>
+			<input type="hidden"	id="price" style="text-align: right;" name="price" value="" readonly="readonly"> 
 		<tr>
 			<td class="top" align="left">특이사항</td>
 		</tr>

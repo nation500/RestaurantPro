@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -8,8 +10,19 @@
 </head>
 <body>
 	<form action ="resview" method="post">
-	<input type="button" value="예약확인">
-	
+	<input type="submit" value="예약확인">
 	</form>
+	
+	<form action ="alllist" method="post">
+	<input type="submit" value="모든 예약확인">
+	</form>
+
+	<form action ="todaylist" method="post">
+	<input type="submit" value="오늘의 예약확인">
+	</form>
+	
+	
+	
+	
 </body>
 </html>

@@ -11,7 +11,18 @@
 <body>
 	<form action ="resview" method="post">
 	<input type="submit" value="예약확인">
-	
 	</form>
+	
+	<form action ="alllist" method="post">
+	<input type="submit" value="모든 예약확인">
+	</form>
+
+	<form action ="todaylist" method="post">
+	<input type="submit" value="오늘의 예약확인">
+	</form>
+	
+	
+	
+	
 </body>
 </html>
