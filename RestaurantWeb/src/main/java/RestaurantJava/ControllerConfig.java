@@ -11,6 +11,8 @@ public class ControllerConfig implements WebMvcConfigurer {
 	private MemberDao memberDao;
 	@Autowired
 	private BoardDao boardDao;
+	@Autowired
+	private CommentDao commentDao;
 
 	@Bean
 	public LoginController loginController() {
@@ -71,11 +73,16 @@ public class ControllerConfig implements WebMvcConfigurer {
 	@Bean
 	public BoardSelectController boardSelectController() {
 		BoardSelectController boardSelectController = new BoardSelectController();
-		return boardSelectController.setBoardDao(boardDao);
+		return boardSelectController.setBoardDao(boardDao, commentDao);
 	}
 	@Bean
 	public BoardSearchController boardSearchController() {
 		BoardSearchController boardSearchController = new BoardSearchController();
 		return boardSearchController.setBoardDao(boardDao);
+	}
+	@Bean
+	public CommentSubmitController commentSubmitController() {
+		CommentSubmitController commentSubmitController = new CommentSubmitController();
+		return commentSubmitController.setCommentDao(commentDao);
 	}
 }

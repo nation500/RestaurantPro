@@ -21,11 +21,6 @@
 			form.submit();
 		}
 	}
-	function resetSession(){
-		if("<%=session.getAttribute("searched")%>" == "null"){
-			<%=session.removeAttribute("searched")%>
-		}
-	}
 </script>
 <head>
 <meta charset="UTF-8">
@@ -98,27 +93,19 @@ header {
 					<td class="num"><%=boardList.get(i).getNum() %></td>
 					<td><a href="select?contNum=<%=boardList.get(i).getNum() %>" class="title" id="title"><%=boardList.get(i).getTitle() %></a></td>
 					<td class="name"><%=boardList.get(i).getName() %></td>
-					<td class="date"><%=boardList.get(i).getDate() %></td>
+					<td class="date"><%=boardList.get(i).getDate().toLocalDate() %></td>
 					<td class="view"><%=boardList.get(i).getView() %></td>
 				</tr>
 			<%} %>
 		</table>
 	</div>
-	<input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><a href="Main.jsp" onclick="resetSession()">돌아가기</a><br>
-	<%if(session.getAttribute("searched") == null){ %>
+	<a href="board?page=1">목록</a><input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><br>
 	<form action="board" method="get">
 	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%>
 		<button name = "page" value="<%=i%>"><%=i %></button>
 	<%} %>
 	</form>
-	<%}else{%>
-	<form action="search" method="post">
-	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%>
-		<button name = "page" value="<%=i%>"><%=i %></button>
-	<%} %>
-	</form>
-	<%} %>
-	<form action="search" method="post" name="srch">
+	<form action="search" method="get" name="srch">
 		<input type="text" name="keyword" placeholder="제목, 내용"><input type="button" value="검색" onclick="runSearch()"><input type="hidden" name="page" value="1">
 	</form>
 </body>

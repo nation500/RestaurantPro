@@ -15,7 +15,7 @@ public class BoardSubmitController {
 	}
 	
 	@PostMapping("submitBoard")
-	public String submitBoard(Board board)throws Exception{
+	public String submitBoard(Board board){
 		try {
 			boardDao.submit(board);
 		}catch(Exception e) {

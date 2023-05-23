@@ -57,7 +57,10 @@
    			RestaurantJava.MvcConfig
    			RestaurantJava.MemberConfig
    			RestaurantJava.BoardConfig
+   			RestaurantJava.CommentConfig
    			RestaurantJava.ControllerConfig
+   			reservation.ReservationConfig
+   			reservation.ReservationControllerConfig
    		</param-value>
 		</init-param>
 		<init-param>
