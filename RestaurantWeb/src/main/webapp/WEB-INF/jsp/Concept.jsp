@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Concept</title>
 <style>
 html{
 	background-color: #1A1A1A;
@@ -15,7 +15,7 @@ html{
 header {
 	position: fixed;
 	background-color: #1C1C1B;
-	top: 15px;
+	top: 0px;
 	left: 0;
 	width: 100%;
 	height: 50px;
@@ -26,6 +26,11 @@ section {
 	color: white;
 	padding-top: 65px;
 	padding-bottom: 11px;
+	 display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 footer {
@@ -34,9 +39,12 @@ footer {
 	text-align: center;
 	color: white;
 	font-size: 6px;
-	bottom: 5px;
+	bottom: 0px;
 	left: 0;
 	width: 100%;
+}
+body {
+text-align: center;
 }
 </style>
 </head>
@@ -45,7 +53,9 @@ footer {
 		<%@include file="Header.jsp"%>
 	</header>
 	<section>
-		<h1>Concept 내용</h1>
+		<img src="img/bg_concept1.png"/>
+		<img src="img/txt_concept.png"/>
+		<img src="img/bg_concept2.png"/>
 	</section>
 	<footer>
 		<%@include file="Footer.jsp"%>

@@ -539,7 +539,6 @@ body {
 	String time = request.getParameter("time");
 	String person = request.getParameter("person");
 	String notice = request.getParameter("notice");
-	
 %>
 <header>
 		<%@include file="Header.jsp"%>
@@ -549,6 +548,8 @@ body {
 	<form action="resupdate"  name="resupdateForm" method="post">
 		<table id="reslist" border="1">
 		<input type="hidden" name="no" value="<%=no %>">
+		<input type="hidden" name="name" value="<%=name %>">
+		<input type="hidden" name="phone" value="<%=phone %>">
 		<tr>
 			<td>이름</td>
 			<td>연락처</td>
@@ -625,7 +626,7 @@ body {
 			<input id="time" name="time" value="" readonly="readonly"></input>
 			</td>
 		</tr>
-			<input type="hidden"	id="price" style="text-align: right;" name="price" value="" readonly="readonly"> 
+			<input type="hidden" id="price" style="text-align: right;" name="price" value="" readonly="readonly"> 
 		<tr>
 			<td class="top" align="left">특이사항</td>
 		</tr>

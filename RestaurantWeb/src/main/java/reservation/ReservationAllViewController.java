@@ -18,7 +18,6 @@ public class ReservationAllViewController {
 		@PostMapping("alllist")
 		public String allList (Model model) throws Exception{
 			try {
-				System.out.println("1");
 				List<ReservationDto> reservationallview = reservationDao.alllist();
 				model.addAttribute("reservationallview",reservationallview);
 			} catch (Exception e) {

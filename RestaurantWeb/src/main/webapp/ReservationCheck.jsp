@@ -40,8 +40,8 @@ body {
 </style>
 <script type="text/javascript">
 <%
-	String name = (String)session.getAttribute("name");
-	String phone = (String)session.getAttribute("phone");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
 	Date date = (Date)session.getAttribute("date");
 	String time = (String)session.getAttribute("time");
 	int person = (int)session.getAttribute("person");
@@ -72,7 +72,7 @@ function home() {
   		</tr>
   		<tr>
     		<td><%=name %></td>
-    		<td><%=phone1 %>-<%=phone2 %>-<%=phone3%></td>
+    		<td><%=phone%></td>
     		<td><%=date %></td>
     		<td><%=time %></td>
     		<td><%=person %>명</td>

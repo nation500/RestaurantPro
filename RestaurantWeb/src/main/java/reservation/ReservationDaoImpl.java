@@ -48,7 +48,6 @@ public class ReservationDaoImpl implements ReservationDao_InterFace{
 	
 	// 모든 테이블값 출력 오늘지난 날짜 제외
 	public List<ReservationDto> alllist() throws Exception	{
-		System.out.println("2");
 	List<ReservationDto> allList = jdbcTemplate.query("select * from reservation where date >= CURRENT_DATE() order by date asc",
 				new RowMapper<ReservationDto>() {
 				@Override

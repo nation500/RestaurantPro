@@ -31,6 +31,8 @@ public class ReservationUpdateController {
 			session.setAttribute("person", person);
 			session.setAttribute("price", price);
 			session.setAttribute("notice", notice);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
