@@ -78,5 +78,11 @@ public class MemberDaoImpl implements MemberDao{
 	public void delete(String id) throws Exception {
 		jdbcTemplate.update("delete from member where id = ?", id);
 	}
+
+	@Override
+	public List<String> getIds() throws Exception {
+		List<String> ids = jdbcTemplate.queryForList("select id from member", String.class);
+		return ids;
+	}
 	
 }

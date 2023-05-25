@@ -28,6 +28,7 @@ public class CommentDaoImpl implements CommentDao{
 			@Override
 			public Comment mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Comment comment = new Comment();
+				comment.setNum(rs.getLong("num"));
 				comment.setHq(rs.getLong("hq"));
 				comment.setId(rs.getString("id"));
 				comment.setName(rs.getString("name"));
@@ -47,7 +48,7 @@ public class CommentDaoImpl implements CommentDao{
 				PreparedStatement pstmt = conn.prepareStatement("insert into comment (hq, id, name, body, date) values(?,?,?,?,?)");
 				pstmt.setLong(1, comment.getHq());
 				pstmt.setString(2, comment.getId());
-				pstmt.setString(3, comment.getName());
+				pstmt.setString(3, comment.getName().substring(0, 1) + "****");
 				pstmt.setString(4, comment.getBody());
 				pstmt.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
 				return pstmt;
