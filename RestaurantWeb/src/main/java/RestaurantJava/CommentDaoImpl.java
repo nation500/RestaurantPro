@@ -48,7 +48,7 @@ public class CommentDaoImpl implements CommentDao{
 				PreparedStatement pstmt = conn.prepareStatement("insert into comment (hq, id, name, body, date) values(?,?,?,?,?)");
 				pstmt.setLong(1, comment.getHq());
 				pstmt.setString(2, comment.getId());
-				pstmt.setString(3, comment.getName().substring(0, 1) + "****");
+				pstmt.setString(3, comment.getId().equals("admin") ? "관리자" : comment.getName().substring(0, 1) + "****");
 				pstmt.setString(4, comment.getBody());
 				pstmt.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
 				return pstmt;

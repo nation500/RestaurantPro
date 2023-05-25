@@ -25,6 +25,19 @@ public class ControllerConfig implements WebMvcConfigurer {
 		LogoutController logoutController = new LogoutController();
 		return logoutController;
 	}
+	
+	@Bean
+	public FindIdController findIdController() {
+		FindIdController findIdController = new FindIdController();
+		return findIdController.setMemberDao(memberDao);
+	}
+	
+	@Bean
+	public FindPwController findPwController() {
+		FindPwController findPwController = new FindPwController();
+		return findPwController.setMemberDao(memberDao);
+	}
+	
 	@Bean
 	public MemberSubpageController memberSubpageController() {
 		MemberSubpageController memberSubpageController = new MemberSubpageController();

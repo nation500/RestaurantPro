@@ -18,16 +18,15 @@ public class MemberSubpageController {
 	
 	@PostMapping("idCheck")
 	@ResponseBody
-	public String goSubpage(@RequestBody String id) throws Exception{
+	public String goSubpage(@RequestBody String userId) throws Exception{
 		boolean isDup = false;
 		List<String> list = memberDao.getIds();
 		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i).equals(id)) {
+			if(list.get(i).equals(userId)) {
 				isDup = true;
 				break;
 			}
 		}
-		System.out.println(isDup);
 		return isDup ? "Dup" : "noDup";
 	}
 }

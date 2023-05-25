@@ -6,30 +6,42 @@
 <meta charset="UTF-8">
 <script type="text/javascript">
 	function reIdCheck(){
-		alert("a")
-		fetch("idCheck")
+		var form = document.subForm;
+		var userId = form.id.value;
+		var IdChecked = false;
+		fetch("idCheck", {
+			method: "POST",
+			headers:{
+				"Content-Type": "text/plain"
+			},
+			body: userId
+			})
 			.then((response) => {
 				if(!response.ok){
-					alert("c")
+					alert("not ok")
+					return;
 				}
-				return response.json()
+				return response.text()
 			})
 			.then((result) => {
-				console.log(result)
+				if(result === "Dup"){
+					IdChecked = false;
+					alert(IdChecked);
+				}else{
+					IdChecked = true;
+					alert(IdChecked);
+				}
 			})
-			.catch(() => {
-				console.log("에러남")
-			})
-		alert("b")
+		
 	}
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="subForm" method="post" action="insert">
+	<form name="subForm" method="post" action="">
 		<p>
 			아이디 : <input type="text" name="id"><input type="button"
-				name="reId" value="ID중복확인" onclick="reIdCheck();">
+				name="reId" value="ID중복확인" onclick="reIdCheck()">
 	</form>
 </body>
 </html>

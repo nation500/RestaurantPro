@@ -7,14 +7,14 @@
 <script type="text/javascript">
 	function reIdCheck(){
 		var form = document.subForm;
-		var id = form.id.value;
+		var userId = form.id.value;
 		var IdChecked = false;
 		fetch("idCheck", {
 			method: "POST",
 			headers:{
 				"Content-Type": "text/plain"
 			},
-			body: id
+			body: userId
 			})
 			.then((response) => {
 				if(!response.ok){
@@ -29,7 +29,7 @@
 					alert(IdChecked);
 				}else{
 					IdChecked = true;
-					alert("b");
+					alert(IdChecked);
 				}
 			})
 		

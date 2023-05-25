@@ -53,7 +53,7 @@
 <%if(session.getAttribute("commentList") != null){ %>
 <%List<Comment> commentList = (List<Comment>)session.getAttribute("commentList");
 	for(int i = 0; i < commentList.size(); i++){ %>
-		<p><%=commentList.get(i).getId().equals(session.getAttribute("writerID")) ? "작성자" : commentList.get(i).getName() %></p> <p><%=commentList.get(i).getDate() %></p><br>
+		<p><%=commentList.get(i).getId().equals(session.getAttribute("writerID")) ? "작성자" : commentList.get(i).getName() %></p> <p><%=commentList.get(i).getDate().toString().replace("T", " ") %></p><br>
 		<p><%=commentList.get(i).getBody() %></p><%if(session.getAttribute("id") != null && session.getAttribute("id").equals(commentList.get(i).getId())) {%>
 		<form action="delComment" method="post" name="comDelForm"><input type="button" value="삭제" onclick="comDelFunction()"><input type="hidden" name="num" value="<%=commentList.get(i).getNum()%>"></form>
 	<%}
