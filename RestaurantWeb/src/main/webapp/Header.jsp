@@ -77,7 +77,7 @@
 </div>
 <%} else{%>
 <div class="right">
-	<p class = "hello">안녕하세요 <%=session.getAttribute("name")%>님</p>
+	<p class = "hello"><%=session.getAttribute("name")%>님</p>
 	<input type="button" value="내 정보" onclick="location.href='MyInfoPage.jsp'">
 	<form action="logout" method="get">
 		<input type="submit" value="로그아웃">

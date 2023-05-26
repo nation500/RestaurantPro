@@ -32,6 +32,11 @@ position :fixed;
   width: 100%;
   height: 50px;
 }
+section {
+	padding-left: 600px;
+	padding-top: 100px;
+	padding-bottom: 63px;
+}
 footer {
 	position: fixed;
 	background-color: #1C1C1B;
@@ -44,11 +49,6 @@ footer {
 }
 body {
   text-align: center;
-}
-section {
-	padding-left: 500px;
-	padding-top: 100px;
-	padding-bottom: 63px;
 }
 #reservation_time {
 	margin: 50px;

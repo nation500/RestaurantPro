@@ -14,7 +14,6 @@ public class LoginController {
 		return this;
 	}
 	
-	
 	@PostMapping("login")
 	public String login(Member member, HttpSession session) {
 		try {

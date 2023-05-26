@@ -35,6 +35,7 @@ section {
 	background-color: #1A1A1A;
 	padding-top: 100px;
 	padding-bottom: 11px;
+	text-align: center;
 }
 
 footer {
@@ -47,9 +48,7 @@ footer {
 	width: 100%;
 	bottom: 0;
 }
-body {
-text-align: center;
-}
+ 
 .button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
@@ -61,9 +60,17 @@ text-align: center;
 	text-align: center;
 	text-decoration: none;
 	
+	
 }
 .button:hover {
 	color: #847F71;
+}
+#bt{
+width: 300px;
+	height: 100px;
+	margin: 5px;
+	font-size: 30px;
+	
 }
 </style>
 <script type="text/javascript">
@@ -90,8 +97,8 @@ function showImage(imageName) {
 		<%@include file="Header.jsp"%>
 	</div>
 	<section>
-		<button onclick="showImage('image1')" class="button">런치</button>
-		<button onclick="showImage('image2')" class="button">디너</button>
+		<button onclick="showImage('image1')" id="bt" class="button">런치</button>
+		<button onclick="showImage('image2')" id="bt" class="button">디너</button>
 			<div id="imageContainer">
  				 <img id="image" src="" alt="">
 			</div>

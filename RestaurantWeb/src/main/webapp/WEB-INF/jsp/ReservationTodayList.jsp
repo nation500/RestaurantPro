@@ -44,6 +44,7 @@ body {
   align-items: center;
 }
 #reservationtodaylist {
+text-align:center;
   border-collapse: collapse;
   border-top: 3px solid #168;
 }  
@@ -136,7 +137,7 @@ function resUpdate(button) {
       <th>날짜</th>
       <th>시간</th>
       <th>인원수</th>
-      <th>메모</th>
+      <th>특이사항</th>
       <th>변경</th>
       <th>취소</th>
     </tr>

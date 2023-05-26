@@ -61,20 +61,33 @@ td{
 #title{
 	text-align:left;
 }
-header {
-	position: fixed;
-	background-color: #1C1C1B;
-	top: 15px;
-	left: 0;
-	width: 100%;
-	height: 50px;
+.top {
+position :fixed;
+  background-color: #1C1C1B;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
+}
+.header {
+  position : fixed;	
+  background-color: #1C1C1B;
+  top: 50px; /* top의 높이만큼 내려옴 */
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
 }
 </style>
 </head>
 <body>
-<header>
-	<%@include file="Header.jsp"%>
-</header>
+<div class="top">
+		<%@include file ="top.jsp" %>
+	</div>
+	<div class="header">
+		<%@include file="Header.jsp"%>
+	</div>
 	<%List<Board> boardList = (List<Board>)session.getAttribute("list"); %>
 	<h1 style="text-align: center">문의 게시판</h1>
 	<div class="container">

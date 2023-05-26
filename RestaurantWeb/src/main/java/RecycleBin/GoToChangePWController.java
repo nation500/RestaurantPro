@@ -5,9 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import RestaurantJava.Member;
-import RestaurantJava.MemberDao;
-
 @Controller
 public class GoToChangePWController {
 	private MemberDao memberDao;
