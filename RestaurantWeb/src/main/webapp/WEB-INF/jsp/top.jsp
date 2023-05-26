@@ -33,7 +33,7 @@
 String userRole = (String)session.getAttribute("userRole");
 %>
 
-function checkLogin() {
+function checkLogin_() {
 	var id = '<%=(String)session.getAttribute("id")%>';
 		if(id=="null"){ 
         	alert("로그인이 필요한 항목입니다."); 
@@ -47,7 +47,7 @@ function checkLogin() {
 	<div class="right">
 		<c:if test="${userRole != 'admin'}">	
 			<form action="resview" method="post">
-				<input type="submit" value="예약확인" class="button" onclick="return checkLogin()" />
+				<input type="submit" value="예약확인" class="button" onclick="return checkLogin_()" />
 			</form>
 		</c:if>
 		<c:if test="${userRole == 'admin'}">

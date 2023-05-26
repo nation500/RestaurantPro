@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Reservation</title>
+<title>RESERVATION | gildong</title>
 <style>
  html{
 	margin: 0;

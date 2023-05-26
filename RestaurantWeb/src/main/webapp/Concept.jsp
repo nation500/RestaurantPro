@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Concept</title>
+<title>CONCEPT | gildong</title>
 <style>
 html{
 	background-color: #1A1A1A;

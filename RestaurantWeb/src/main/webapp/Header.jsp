@@ -2,16 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
-	function clearSearch(){
-		<%session.removeAttribute("searched"); %>
-	}
 	function checkLogin() {
 		var id = '<%=(String)session.getAttribute("id")%>';
 			if(id=="null"){ 
 	        	alert("로그인이 필요한 항목입니다."); 
 	        	return false;
 	        }
-			return "Reservation.jsp";
+			var reservationUrl = "Reservation.jsp";
+			location.href = reservationUrl;
+			return true;
 		}
 </script>
 <style type="text/css">
@@ -49,13 +48,13 @@
 	float: right;
 	margin-right: 360px;
 }
-.id, .pw, .loginBtn, .subBtn, .btn{
+.id, .pw, .loginBtn, .subBtn, .QnABtn, .infoBtn, .logoutBtn{
 	display: inline-block;
 	margin-top: 4px;
 	margin-left: 4px;
 	margin-right: 4px;
 }
-.loginBtn, .subBtn{
+.loginBtn, .subBtn, .QnABtn, .infoBtn, .logoutBtn{
 	background-color: #1C1C1B;
 	color: #C0C0C0;
 	border: 1px solid #C0C0C0;
@@ -63,46 +62,35 @@
 	text-decoration: none;
 	padding: 4px 6px;
 }
-.loginBtn, .subBtn:hover{
+.loginBtn, .subBtn, .QnABtn, .infoBtn, .logoutBtn:hover{
 	cursor: pointer;
 }
 .hello{
 	color: white;
 }
-.btn{
-	background-color: #1C1C1B;
-	color: #C0C0C0;
-	border: 1px solid #C0C0C0;
-	font-size: 12px;
-	text-decoration: none;
-	padding: 4px 6px;
-}
-.btn:hover{
-	cursor: pointer;
-}
 </style>
 <div class="left">
 	<a href="Main.jsp" class="mark">gildong</a> <a href="Concept.jsp" class="button">CONCEPT</a>
-	<a href="Menu.jsp" class="button">MENU</a> <a href="" class="button" onclick="checkLogin()">RESERVATION</a>
+	<a href="Menu.jsp" class="button">MENU</a> <a href="#" class="button" onclick="checkLogin()">RESERVATION</a>
 </div>
 <%if(session.getAttribute("id") == null) {%>
 <div class="right">
 	<a href="LoginPage.jsp" class="loginBtn">로그인</a>
 	<a href="SubPage.jsp" class="subBtn">회원가입</a>
 	<form action="board" method="get">
-		<input type="submit" value="문의 게시판" class="btn" onclick="clearSearch()">
+		<input type="submit" value="문의 게시판" class="QnABtn">
 		<input type="hidden" name="page" value="1">
 	</form>
 </div>
 <%} else{%>
 <div class="right">
 	<p class = "hello"><%=session.getAttribute("name")%>님</p>
-	<input type="button" value="내 정보" onclick="location.href='MyInfoPage.jsp'">
+	<input type="button" value="내 정보" onclick="location.href='MyInfoPage.jsp'" class="infoBtn">
 	<form action="logout" method="get">
-		<input type="submit" class="btn" value="로그아웃">
+		<input type="submit" value="로그아웃" class="logoutBtn">
 	</form>
 	<form action="board" method="get">
-		<input type="submit" class="btn" value="문의 게시판">
+		<input type="submit" value="문의 게시판" class="QnABtn">
 		<input type="hidden" name="page" value="1">
 	</form>
  	

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Main</title>
+<title>gildong</title>
 <style type = "text/css">
 html{
 	background-color: #1A1A1A;

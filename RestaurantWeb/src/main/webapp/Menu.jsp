@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Menu</title>
+<title>MENU | gildong</title>
 <style type="text/css">
 html{
 	background-color: #1A1A1A;

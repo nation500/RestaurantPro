@@ -24,11 +24,17 @@
 </script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>QnA | gildong</title>
 <style>
 .container {
 	margin: 4% auto;
 	width: 1200px;
+}
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
 }
 table{
 	border-collapse: collapse;
@@ -79,6 +85,13 @@ position :fixed;
   height: 50px;
   z-index: 1; /* 헤더가 위로 오도록 설정 */
 }
+.writeBtn, .listBtn{
+	width: 90px;
+	height: 30px;
+}
+.btns{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -112,14 +125,16 @@ position :fixed;
 			<%} %>
 		</table>
 	</div>
-	<a href="board?page=1">목록</a><input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"><br>
-	<form action="board" method="get">
+	<div class="btns">
+	<p><input type="button" value="글 목록" onclick="location.href=board?page=1" class="listBtn"><input type="button" value="글쓰기" onclick="writeBtn()" class="writeBtn"></p><br>
+	<p><form action="board" method="get">
 	<%for(int i = 1; i <= Integer.parseInt(session.getAttribute("Bcnt").toString()); ++i) {%>
 		<button name = "page" value="<%=i%>"><%=i %></button>
 	<%} %>
 	</form>
-	<form action="search" method="get" name="srch">
+	<p><form action="search" method="get" name="srch">
 		<input type="text" name="keyword" placeholder="제목, 내용"><input type="button" value="검색" onclick="runSearch()"><input type="hidden" name="page" value="1">
 	</form>
+	</div>
 </body>
 </html>

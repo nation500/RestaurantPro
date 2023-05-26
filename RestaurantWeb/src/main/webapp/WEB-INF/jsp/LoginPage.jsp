@@ -58,7 +58,7 @@ input[type=button] {
 	}
 </script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LOGIN | gildong</title>
 </head>
 <body>
 	<br><br><br><br><br><br><br><br><br><br><br>
