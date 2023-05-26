@@ -73,6 +73,30 @@
 	}
 </script>
 <style type="text/css">
+.top {
+position :fixed;
+  background-color: #1C1C1B;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
+}
+.header {
+  position : fixed;	
+  background-color: #1C1C1B;
+  top: 50px; /* top의 높이만큼 내려옴 */
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
+}
+section {
+	background-color: #1A1A1A;
+	color: white;
+	padding-top: 100px;
+	padding-bottom: 63px;
+}
 body{
 	width: 100%;
     height: 100%;
@@ -119,9 +143,17 @@ body{
 <title>Insert title here</title>
 </head>
 <body>
+<div class="top">
+		<%@include file ="top.jsp" %>
+	</div>
+	<div class="header">
+		<%@include file="Header.jsp"%>
+	</div>
+	<section>
 <div class="container">
 	<form name="subForm" method="post" action="insert">
 		<div class="contentBox">
+		<h3>회원가입</h3>
 			<input type="text" name="id" placeholder="아이디" class="a"><input type="button"
 				name="reId" value="ID중복확인" onclick="checkIdDup()" class="checkIdBtn">
 				
@@ -138,6 +170,7 @@ body{
 		</div>
 	</form>
 </div>
+</section>
 </body>
 </html>
 
