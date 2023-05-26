@@ -5,6 +5,14 @@
 	function clearSearch(){
 		<%session.removeAttribute("searched"); %>
 	}
+	function checkLogin() {
+		var id = '<%=(String)session.getAttribute("id")%>';
+			if(id=="null"){ 
+	        	alert("로그인이 필요한 항목입니다."); 
+	        	return false;
+	        }
+			return "Reservation.jsp";
+		}
 </script>
 <style type="text/css">
 .button {
@@ -41,7 +49,7 @@
 	float: right;
 	margin-right: 360px;
 }
-.id, .pw, .loginBtn, .subBtn{
+.id, .pw, .loginBtn, .subBtn, .btn{
 	display: inline-block;
 	margin-top: 4px;
 	margin-left: 4px;
@@ -61,17 +69,28 @@
 .hello{
 	color: white;
 }
+.btn{
+	background-color: #1C1C1B;
+	color: #C0C0C0;
+	border: 1px solid #C0C0C0;
+	font-size: 12px;
+	text-decoration: none;
+	padding: 4px 6px;
+}
+.btn:hover{
+	cursor: pointer;
+}
 </style>
 <div class="left">
 	<a href="Main.jsp" class="mark">gildong</a> <a href="Concept.jsp" class="button">CONCEPT</a>
-	<a href="Menu.jsp" class="button">MENU</a> <a href="Reservation.jsp" class="button">RESERVATION</a>
+	<a href="Menu.jsp" class="button">MENU</a> <a href="" class="button" onclick="checkLogin()">RESERVATION</a>
 </div>
 <%if(session.getAttribute("id") == null) {%>
 <div class="right">
 	<a href="LoginPage.jsp" class="loginBtn">로그인</a>
 	<a href="SubPage.jsp" class="subBtn">회원가입</a>
 	<form action="board" method="get">
-		<input type="submit" value="문의 게시판" onclick="clearSearch()">
+		<input type="submit" value="문의 게시판" class="btn" onclick="clearSearch()">
 		<input type="hidden" name="page" value="1">
 	</form>
 </div>
@@ -80,10 +99,10 @@
 	<p class = "hello"><%=session.getAttribute("name")%>님</p>
 	<input type="button" value="내 정보" onclick="location.href='MyInfoPage.jsp'">
 	<form action="logout" method="get">
-		<input type="submit" value="로그아웃">
+		<input type="submit" class="btn" value="로그아웃">
 	</form>
 	<form action="board" method="get">
-		<input type="submit" value="문의 게시판">
+		<input type="submit" class="btn" value="문의 게시판">
 		<input type="hidden" name="page" value="1">
 	</form>
  	
