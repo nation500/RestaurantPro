@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Concept</title>
 <style>
 html{
 	background-color: #1A1A1A;
@@ -12,20 +12,23 @@ html{
   	padding: 0;
   	height: 100%;
 }
-header {
-	position: fixed;
-	background-color: #1C1C1B;
-	top: 15px;
-	left: 0;
-	width: 100%;
-	height: 50px;
+.top {
+	position :fixed;
+  background-color: #1C1C1B;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
 }
-
-section {
-	background-color: #1A1A1A;
-	color: white;
-	padding-top: 65px;
-	padding-bottom: 11px;
+.header {
+  position : fixed;	
+  background-color: #1C1C1B;
+  top: 50px; /* top의 높이만큼 내려옴 */
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1; /* 헤더가 위로 오도록 설정 */
 }
 
 footer {
@@ -34,18 +37,30 @@ footer {
 	text-align: center;
 	color: white;
 	font-size: 6px;
-	bottom: 5px;
+	bottom: 0px;
 	left: 0;
 	width: 100%;
+}
+section {
+	top: 100px;
+	background-color: #1A1A1A;
+	padding-top: 100px;
+	padding-bottom: 63px;
+	text-align: center; /* 이미지를 가로 방향으로 가운데 정렬 */
 }
 </style>
 </head>
 <body>
-	<header>
+	<div class="top">
+		<%@include file ="top.jsp" %>
+	</div>
+	<div class="header">
 		<%@include file="Header.jsp"%>
-	</header>
+	</div>
 	<section>
-		<h1>Concept 내용</h1>
+		<img src="img/bg_concept1.png"/>
+		<img src="img/txt_concept.png"/>
+		<img src="img/bg_concept2.png"/>
 	</section>
 	<footer>
 		<%@include file="Footer.jsp"%>

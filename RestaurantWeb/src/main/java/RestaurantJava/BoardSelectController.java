@@ -37,7 +37,6 @@ public class BoardSelectController {
 			session.setAttribute("body", board.getBody());
 
 			List<Comment> list = commentDao.getComments(contNum);
-			session.removeAttribute("commentList");
 			if (list != null) {
 				session.setAttribute("commentList", list);
 			}

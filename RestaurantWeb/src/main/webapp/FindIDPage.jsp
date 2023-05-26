@@ -33,10 +33,9 @@ body {
 	<br>
 	<br>
 	<br>
-	<form action=findID method="post">
+	<form action=findID>
 		이름<input type="text" name="name" class="a"><br>
 		휴대전화<input type="text" name="phone" class="b"><br>
-		<input type="submit" value="확인"><input type="button" value="취소" onclick="location.href='LoginPage.jsp'">
 	</form>
 </body>
 </html>

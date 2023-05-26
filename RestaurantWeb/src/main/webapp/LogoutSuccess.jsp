@@ -9,6 +9,7 @@
 </head>
 <body>
 <script type="text/javascript">
+	alert("성공적으로 로그아웃되었습니다");
 	location.href = "Main.jsp";
 </script>
 </body>

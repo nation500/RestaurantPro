@@ -9,44 +9,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Reservation</title>
-<title>Insert title here</title>
 <style>
- 
-html{
-	background-color: #1A1A1A;
+ html{
 	margin: 0;
   	padding: 0;
   	height: 100%;
 }
-header {
-	position: fixed;
-	background-color: #1C1C1B;
-	top: 0;
-	top: 15px;
-	left: 0;
-	width: 100%;
-	height: 50px;
+/* top 부분 고정*/
+.tp {
+position :fixed;
+  background-color: #1C1C1B;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
 }
-
+.header {
+  position : fixed;	
+  background-color: #1C1C1B;
+  top: 50px; /* top의 높이만큼 내려옴 */
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
 section {
-	background-color: #1A1A1A;
-	color: white;
-	padding-top: 65px;
-	padding-bottom: 11px;
+	padding-left: 600px;
+	padding-top: 100px;
+	padding-bottom: 63px;
 }
 footer {
+	position: fixed;
+	background-color: #1C1C1B;
 	text-align: center;
 	color: white;
 	font-size: 6px;
 	bottom: 0;
-	bottom: 5px;
 	left: 0;
 	width: 100%;
 }
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 #reservation_time {
 	margin: 50px;
@@ -64,7 +66,8 @@ body {
 #reservation_time td.content {
 	padding-bottom: 50px;
 }
-#calendar{margin-bottom:50px; padding: 10px; color: #505050; border: 1px solid #dcdcdc;}
+#calendar{
+margin-bottom:50px; padding: 10px; color: #505050; border: 1px solid #dcdcdc;}
 
 #calendar td {padding:10px;	}
 
@@ -113,9 +116,23 @@ body {
 }
 #btnTime{
 	text-align: center;
+	text-decoration : none;
+	color : #fff;
+	background-color : #ace2f9;
+	border : none;
+	display : inline-block;
 	height: 40px;
 	width: 70px;
 	border : 1px solid;
+}
+#btnTime:hover{
+	text-align: center;
+	text-decoration: none;
+	color: #ace2f9;
+	background-color: #fff;
+	border: 1px solid #ace2f9;
+	display: inline-block;
+	
 }
 #btn_submit {
 	margin: 0;
@@ -503,14 +520,14 @@ body {
 			  }
 	 	form.submit();
 	}
-	
-	
 </script>
 <body>
-<header>
-	<header>
+	<div class="tp">
+		<%@include file ="top.jsp" %>
+	</div>
+	<div class="header">
 		<%@include file="Header.jsp"%>
-	</header>
+	</div>
 	<section>
 	<form action="resinsert"  name="resinsertForm" method="post">
 	<table id="reservation_time">
@@ -596,12 +613,9 @@ body {
 	</table>
 	</form>
 	<script type="text/javascript">buildCalendar();</script>
-		<h1>예약 로직</h1>
 	</section>
 	<footer>
 		<%@include file="Footer.jsp"%>
 	</footer>
-	
-
 </body>
 </html>
